@@ -25,8 +25,9 @@ public class Home_Page {
     WebElement Home_Page_Linux_Distro;
     @FindBy(xpath = "//select[contains(@name,'dataspan')]")
     WebElement Data_Span_Dropdown;
-    @FindBy(xpath = "/html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr[2]/td/form/input")
+    @FindBy(xpath = "(//input[@value='Go'])[4]")
     WebElement Go_Button;
+
     @FindBy(xpath = "/html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr[4]/td[1]")
     WebElement Rank_One;
     @FindBy(xpath = "/html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr[5]/td[1]")
@@ -49,15 +50,16 @@ public class Home_Page {
         Assert.assertTrue(Home_Page_Linux_Distro.isDisplayed());
     }
     public void Select_Year(String _year) throws InterruptedException {
-        WebDriverWait drpOptions=new WebDriverWait(driver,20);
+        WebDriverWait drpOptions=new WebDriverWait(driver,30);
         drpOptions.until(ExpectedConditions.visibilityOf(Data_Span_Dropdown));
 
         Select year=new Select(Data_Span_Dropdown);
         year.selectByVisibleText(_year);
     }
     public void Click_Go() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         Go_Button.click();
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(7);
     }
     public void Check_Top_Five(String _first,String _second,String _third,String _fourth,String _fifth)
     {
