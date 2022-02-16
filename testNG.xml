@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite thread-count="1" name="QA Automation Engineer Assessment" parallel="false">
+    <test name="Tech Check - QA Automation Engineer Assessment">
+        <classes>
+            <class name ="Tests.Test_Runner"/>
+        </classes>
+    </test>
+</suite>
