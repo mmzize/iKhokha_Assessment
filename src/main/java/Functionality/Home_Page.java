@@ -9,9 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import java.util.concurrent.TimeUnit;
-
 public class Home_Page {
 
     private WebDriver driver;
@@ -25,9 +22,6 @@ public class Home_Page {
     WebElement Home_Page_Linux_Distro;
     @FindBy(xpath = "//select[contains(@name,'dataspan')]")
     WebElement Data_Span_Dropdown;
-    @FindBy(xpath = "(//input[@value='Go'])[4]")
-    WebElement Go_Button;
-
     @FindBy(xpath = "/html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr[4]/td[1]")
     WebElement Rank_One;
     @FindBy(xpath = "/html/body/table[2]/tbody/tr/td[3]/table[2]/tbody/tr[5]/td[1]")
@@ -56,10 +50,12 @@ public class Home_Page {
         Select year=new Select(Data_Span_Dropdown);
         year.selectByVisibleText(_year);
     }
-    public void Click_Go() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(3);
-        Go_Button.click();
-        TimeUnit.SECONDS.sleep(7);
+    public void Click_Go()  {
+        if(driver.findElements(By.xpath("//input[@value='Go'])[4]")).size()!=0)
+        {
+            WebElement Go_Button=driver.findElement(By.xpath(""));
+            Go_Button.click();
+        }
     }
     public void Check_Top_Five(String _first,String _second,String _third,String _fourth,String _fifth)
     {
